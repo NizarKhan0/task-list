@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  mysql:
+    image: mariadb:10.8.3
+    # Uncomment below when on Mac M1
+    # platform: linux/arm64/v8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      # boleh set pass dan username apa2 sebab nanti nak connect utk migrate dgn db laravel(env)
+    ports:
+      - 3306:3306
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
